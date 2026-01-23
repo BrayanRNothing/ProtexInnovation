@@ -1,126 +1,170 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { products } from './productosData';
-
-const heroProducts = [
-  { id: 1, title: 'Industrial Breakers', badge: 'Reliable protection', color: 'from-blue-600 to-sky-500' },
-  { id: 2, title: 'Load Centers', badge: 'Fast installation', color: 'from-cyan-600 to-teal-500' },
-  { id: 3, title: 'Control Solutions', badge: 'Trusted brands', color: 'from-amber-500 to-orange-500' },
-];
+import { ChevronRight, ChevronLeft, Star, ShieldCheck, Zap } from 'lucide-react';
 
 export default function Section1() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const navigate = useNavigate();
-  const collageProducts = products.slice(0, 24);
+
+  // Use the actual products for the hero slider
+  const heroItems = products.slice(0, 5); // Take top 5 products for the slider
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroProducts.length);
-    }, 6000);
+      setCurrentSlide((prev) => (prev + 1) % heroItems.length);
+    }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [heroItems.length]);
 
-  const product = heroProducts[currentSlide];
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroItems.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + heroItems.length) % heroItems.length);
+
+  const currentProduct = heroItems[currentSlide];
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className={`absolute top-0 -right-40 w-96 h-96 bg-gradient-to-bl from-blue-200/30 to-transparent rounded-full blur-3xl transition-all duration-1000 opacity-50`} />
-        <div className={`absolute -bottom-32 -left-40 w-80 h-80 bg-gradient-to-tr from-cyan-200/30 to-transparent rounded-full blur-3xl transition-all duration-1000 opacity-50`} />
-        <div className="absolute top-1/3 right-1/3 w-72 h-72 bg-gradient-to-b from-amber-200/20 to-transparent rounded-full blur-3xl animate-pulse" />
+    <section className="relative w-full min-h-[90vh] flex items-center overflow-hidden bg-white">
+      {/* Background Gradients */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] right-[-5%] w-[50vw] h-[50vw] bg-gradient-to-br from-blue-100/40 to-cyan-100/40 rounded-full blur-3xl opacity-60" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-gradient-to-tr from-gray-100 to-blue-50/50 rounded-full blur-3xl opacity-60" />
+        {/* Animated accent blob */}
+        <div key={currentSlide} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30vw] h-[30vw] bg-gradient-to-r from-blue-500/10 to-cyan-400/10 rounded-full blur-[100px] transition-all duration-1000" />
       </div>
 
-      <div className="relative z-10 w-full min-h-[calc(100vh-64px)] flex items-center justify-center px-4 pt-4 pb-12 md:pb-20 lg:pb-28">
-        <div className="max-w-7xl w-full mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            {/* Left Content */}
-            <div className="space-y-8 transition-all duration-700 opacity-100">
-              <div className="space-y-2">
-                <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xs font-bold uppercase tracking-widest shadow-lg backdrop-blur-md border border-blue-500/20">
-                  ⚡  Electrical solutions you trust
-                </span>
-              </div>
+      <div className="max-w-7xl w-full mx-auto px-6 py-1 md:py-20 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight h-[100px] sm:h-[120px] md:h-[160px] lg:h-[180px] flex items-center">
-                <span className="block max-w-[16ch] bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent">
-                  {product.title}
+          {/* Left Content: Text */}
+          <div className="space-y-2 lg:space-y-3 order-2 lg:order-1 relative">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wider">
+              <ShieldCheck size={14} className="text-blue-600" />
+              <span>Protección Premium</span>
+            </div>
+
+            <div className="space-y-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight text-gray-900">
+                <span className="block">{currentProduct.title.split(' ').slice(0, 2).join(' ')}</span>
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+                  {currentProduct.title.split(' ').slice(2, 4).join(' ')}
+                </span>
+                <span className="text-2xl sm:text-4xl font-light text-gray-400 block mt-2">
+                  {currentProduct.title.split(' ').slice(4).join(' ')}
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed font-light">
-                Specialists in circuit breakers, load centers and electrical protection for residential, commercial and industrial projects. Fast delivery, expert support and premium manufacturers.
+              <p className="text-lg text-gray-600 max-w-lg leading-relaxed border-l-4 border-blue-500/20 pl-4 py-1">
+                {currentProduct.details}
               </p>
 
-              <div className="flex flex-wrap gap-3 sm:gap-4 pt-4 sm:pt-6">
-                <button className="group px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 active:scale-95 relative overflow-hidden text-sm sm:text-base">
-                  <span className="relative z-10">Shop Now</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-cyan-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </button>
-                <button className="px-6 py-3 sm:px-8 sm:py-4 border-2 border-gray-900/30 text-gray-900 font-bold rounded-xl backdrop-blur-md hover:bg-gray-900/5 hover:border-gray-900/50 transition-all duration-300 hover:scale-105 active:scale-95 text-sm sm:text-base">
-                  Explore Catalog
-                </button>
-              </div>
-
-              {/* Stats */}
-              <div className="flex gap-8 pt-8 border-t border-gray-300">
-                <div className="space-y-1">
-                  <p className="text-3xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">10K+</p>
-                  <p className="text-sm text-gray-600 font-medium">Satisfied clients</p>
+              <div className="flex items-center gap-4 text-sm font-semibold text-gray-500 pt-2">
+                <div className="flex items-center gap-1.5">
+                  <Zap size={16} className="text-amber-500 fill-amber-500" /> Alto Rendimiento
                 </div>
-                <div className="space-y-1">
-                  <p className="text-3xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">500+</p>
-                  <p className="text-sm text-gray-600 font-medium">SKUs in stock</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-3xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">24/7</p>
-                  <p className="text-sm text-gray-600 font-medium">Technical support</p>
+                <div className="w-1 h-1 rounded-full bg-gray-300" />
+                <div className="flex items-center gap-1.5">
+                  <Star size={16} className="text-blue-500 fill-blue-500" /> Alta Calidad
                 </div>
               </div>
             </div>
 
-            {/* Right: Product Collage */}
-            <div className="relative h-96 md:h-full transition-all duration-700 opacity-100">
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '12px', height: '100%', gridAutoFlow: 'dense' }}>
-                {collageProducts.map((item, idx) => (
-                  <div
-                    key={item.id}
-                    onClick={() => navigate(`/producto/${item.id}`)}
-                    className={`relative rounded-2xl overflow-hidden group cursor-pointer shadow-lg border-2 border-transparent transition-all duration-150`}
-                    style={{
-                      animation: `float 4s ease-in-out infinite`,
-                      animationDelay: idx * 0.1 + 's',
-                      gridColumn: idx === 0 || idx === 5 || idx === 11 || idx === 16 ? 'span 2' : 'span 1',
-                      gridRow: idx === 0 || idx === 5 || idx === 11 || idx === 16 ? 'span 2' : 'span 1',
-                    }}
-                  >
-                    {/* Imagen del producto */}
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                    />
+            <div className="flex flex-wrap gap-4 pt-2">
+              <button
+                onClick={() => navigate(`/producto/${currentProduct.id}`)}
+                className="group relative px-8 py-4 bg-gray-900 text-white font-bold rounded-2xl shadow-xl shadow-blue-900/10 hover:shadow-2xl hover:shadow-blue-900/20 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative flex items-center gap-2">
+                  Ver Detalle <ChevronRight size={18} />
+                </span>
+              </button>
 
-                    {/* Borde neon en hover */}
-                    <div className="absolute inset-0 rounded-2xl border-2 border-transparent opacity-0 group-hover:opacity-100 transition-all duration-100 pointer-events-none" style={{borderColor: '#00d9ff', boxShadow: '0_0_20px_rgba(0,217,255,0.9), inset_0_0_15px_rgba(0,217,255,0.2)'}} />
-                  </div>
+              <div className="flex items-center gap-2 px-6 py-4 rounded-2xl bg-white border border-gray-200 shadow-sm">
+                <span className="text-sm text-gray-500 font-medium uppercase tracking-wide">Precio</span>
+                <span className="text-xl font-bold text-gray-900">${currentProduct.price}</span>
+              </div>
+            </div>
+
+            {/* Slider Controls */}
+            <div className="flex items-center gap-4 pt-8">
+              <button onClick={prevSlide} className="p-3 rounded-full hover:bg-gray-100 border border-gray-200 transition-colors text-gray-600 hover:text-gray-900">
+                <ChevronLeft size={20} />
+              </button>
+              <div className="flex gap-2">
+                {heroItems.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${currentSlide === idx ? 'w-8 bg-blue-600' : 'w-2 bg-gray-300 hover:bg-gray-400'
+                      }`}
+                  />
                 ))}
+              </div>
+              <button onClick={nextSlide} className="p-3 rounded-full hover:bg-gray-100 border border-gray-200 transition-colors text-gray-600 hover:text-gray-900">
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          </div>
+
+          {/* Right Content: Product Image */}
+          <div className="order-1 lg:order-2 relative h-[50vh] lg:h-[70vh] flex items-center justify-center perspective-1000">
+            {/* Decorative rings background */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none">
+              <div className="w-[500px] h-[500px] border border-gray-200 rounded-full animate-[spin_60s_linear_infinite]" />
+              <div className="absolute w-[400px] h-[400px] border border-gray-200 rounded-full animate-[spin_40s_linear_infinite_reverse] border-dashed" />
+              <div className="absolute w-[600px] h-[600px] border border-blue-100/50 rounded-full" />
+            </div>
+
+            {/* Main Image Container */}
+            <div className="relative z-10 transition-all duration-700 w-full max-w-md mx-auto aspect-square flex items-center justify-center p-8">
+              {/* Glass Card Background */}
+              <div className="absolute inset-0 bg-white/40 backdrop-blur-sm rounded-[3rem] border border-white/60 shadow-2xl shadow-blue-900/5 rotate-[-6deg] transition-transform duration-500 group-hover:rotate-0" />
+
+              {/* Product Image */}
+              <div
+                key={currentProduct.id}
+                className="relative w-full h-full p-6 transition-all duration-700 animate-float"
+              >
+                <img
+                  src={currentProduct.image}
+                  alt={currentProduct.title}
+                  className="w-full h-full object-contain drop-shadow-2xl filter contrast-110"
+                  style={{
+                    maxHeight: '100%',
+                    maxWidth: '100%',
+                    filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.15))'
+                  }}
+                />
+              </div>
+
+              {/* Floating Badge */}
+              <div className="absolute -right-4 top-10 bg-white/80 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-white/50 animate-bounce-slow">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-gray-900 uppercase tracking-widest">
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  Disponible
+                </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
-
-
       <style>{`
+        .perspective-1000 { perspective: 1000px; }
         @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(1deg); }
+          0%, 100% { transform: translateY(0px) scale(1.02); }
+          50% { transform: translateY(-15px) scale(1); }
         }
-        @keyframes glow {
-          0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
-          50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        @keyframes bounce-slow {
+           0%, 100% { transform: translateY(0); }
+           50% { transform: translateY(-5px); }
+        }
+        .animate-bounce-slow {
+           animation: bounce-slow 3s ease-in-out infinite;
         }
       `}</style>
     </section>

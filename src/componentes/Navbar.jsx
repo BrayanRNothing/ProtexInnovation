@@ -54,62 +54,62 @@ export default function Navbar() {
 
   return (
     <>
-    <nav 
-      className="w-full overflow-hidden fixed top-0 left-0 z-[100] transition-all duration-500"
-      style={{
-        backgroundColor: 'rgba(255, 255, 255, 0.45)',
-        backdropFilter: 'blur(20px) saturate(180%)',
-        WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-        borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
-        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
-      }}
-    >
-      <div className="flex items-center h-14 md:h-16 w-full overflow-hidden">
-        {/* Logo + nombre de tienda (neutro) alineado a la izquierda */}
-        <div className="flex items-center flex-shrink-0 overflow-hidden">
-          <a href="/" className="flex items-center text-2xl font-semibold overflow-hidden">
-            <div className="w-14 h-14 flex items-center justify-center overflow-hidden">
+      <nav
+        className="w-full overflow-hidden fixed top-0 left-0 z-[100] transition-all duration-500"
+        style={{
+          backgroundColor: 'rgba(255, 255, 255, 0.45)',
+          backdropFilter: 'blur(20px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+          borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
+        }}
+      >
+        <div className="flex items-center h-14 md:h-16 w-full overflow-hidden">
+          {/* Logo + nombre de tienda (neutro) alineado a la izquierda */}
+          <div className="flex items-center flex-shrink-0 overflow-hidden">
+            <a href="/" className="flex items-center text-2xl font-semibold overflow-hidden">
+              <div className="w-14 h-14 flex items-center justify-center overflow-hidden">
                 <div className="transition-transform duration-700 ease-out" style={{ animationDelay: '0.2s' }}>
-                <img src={logo} alt="Protex" className="w-14 h-14 object-contain" />
+                  <img src={logo} alt="Protex" className="w-14 h-14 object-contain" />
+                </div>
               </div>
-            </div>
-            <span className={logoTextClass} style={{ animationDelay: '0.7s' }}>
-              Protex Innovation
-            </span>
-          </a>
-        </div>
-        {/* Desktop Menu (hidden on mobile) */}
-        <div className="justify-end flex-1 hidden px-6 md:flex">
-          <div className="flex items-center space-x-6">
-            <Link to="/" className={navLinkClass}>Home</Link>
-            <Link to="/Catalogo" className={navLinkClass}>Products</Link>
-            <Link to="/Empresa" className={navLinkClass}>About</Link>
-            <Link to="/Contacto" className={navLinkClass}>Contact</Link>
-            <button className="relative" onClick={() => setCartOpen(true)} aria-label="Carrito">
-              <svg xmlns="http://www.w3.org/2000/svg" className={desktopCartIconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007 17h10a1 1 0 00.95-.68L21 13M7 13V6a1 1 0 011-1h5a1 1 0 011 1v7" />
-              </svg>
-              {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 w-4 h-4 bg-amber-600 text-white text-xs font-bold rounded-full flex items-center justify-center text-[10px]">{totalItems}</span>
-              )}
-            </button>
+              <span className={logoTextClass} style={{ animationDelay: '0.7s' }}>
+                Protex Innovation
+              </span>
+            </a>
           </div>
-        </div>
-        {/* Mobile Menu: hamburger and cart */}
-        <div className="flex items-center justify-end flex-1 mr-2 md:hidden">
-          <button
-            className={mobileButtonClass}
-            onClick={() => setMobileMenuOpen((v) => !v)}
-            aria-label="Open menu"
-          >
-            {/* Hamburger icon */}
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-          <button className="relative" onClick={() => setCartOpen(true)} aria-label="Cart">
-            <svg xmlns="http://www.w3.org/2000/svg" className={mobileCartIconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007 17h10a1 1 0 00.95-.68L21 13M7 13V6a1 1 0 011-1h5a1 1 0 011 1v7" />
+          {/* Desktop Menu (hidden on mobile) */}
+          <div className="justify-end flex-1 hidden px-6 md:flex">
+            <div className="flex items-center space-x-6">
+              <Link to="/" className={navLinkClass}>Inicio</Link>
+              <Link to="/Catalogo" className={navLinkClass}>Catálogo</Link>
+              <Link to="/Empresa" className={navLinkClass}>Nosotros</Link>
+              <Link to="/Contacto" className={navLinkClass}>Contacto</Link>
+              <button className="relative" onClick={() => setCartOpen(true)} aria-label="Ver carrito">
+                <svg xmlns="http://www.w3.org/2000/svg" className={desktopCartIconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007 17h10a1 1 0 00.95-.68L21 13M7 13V6a1 1 0 011-1h5a1 1 0 011 1v7" />
+                </svg>
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 w-4 h-4 bg-amber-600 text-white text-xs font-bold rounded-full flex items-center justify-center text-[10px]">{totalItems}</span>
+                )}
+              </button>
+            </div>
+          </div>
+          {/* Mobile Menu: hamburger and cart */}
+          <div className="flex items-center justify-end flex-1 mr-2 md:hidden">
+            <button
+              className={mobileButtonClass}
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              aria-label="Abrir menú"
+            >
+              {/* Hamburger icon */}
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <button className="relative" onClick={() => setCartOpen(true)} aria-label="Ver carrito">
+              <svg xmlns="http://www.w3.org/2000/svg" className={mobileCartIconClass} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 007 17h10a1 1 0 00.95-.68L21 13M7 13V6a1 1 0 011-1h5a1 1 0 011 1v7" />
               </svg>
               {totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 w-4 h-4 bg-blue-600 text-white text-xs font-bold rounded-full flex items-center justify-center text-[10px]">{totalItems}</span>
@@ -121,28 +121,27 @@ export default function Navbar() {
         <div
           className={`flex flex-row items-center justify-center w-full gap-3 px-4 border-b md:hidden transition-all duration-300
         ${mobileMenuOpen ? 'py-2 opacity-100 pointer-events-auto' : 'py-0 opacity-0 pointer-events-none border-none'}`}
-        style={{
-          height: mobileMenuOpen ? 'auto' : 0, 
-          overflow: 'hidden',
-        }}
+          style={{
+            height: mobileMenuOpen ? 'auto' : 0,
+            overflow: 'hidden',
+          }}
         >
-          <Link to="/" className="text-base font-medium text-gray-900 hover:text-gray-700 transition-colors" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-          <Link to="/Catalogo" className="text-base font-medium text-gray-900 hover:text-gray-700 transition-colors" onClick={() => setMobileMenuOpen(false)}>Products</Link>
-          <Link to="/Empresa" className="text-base font-medium text-gray-900 hover:text-gray-700 transition-colors" onClick={() => setMobileMenuOpen(false)}>About</Link>
-          <Link to="/Contacto" className="text-base font-medium text-gray-900 hover:text-gray-700 transition-colors" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
+          <Link to="/" className="text-base font-medium text-gray-900 hover:text-gray-700 transition-colors" onClick={() => setMobileMenuOpen(false)}>Inicio</Link>
+          <Link to="/Catalogo" className="text-base font-medium text-gray-900 hover:text-gray-700 transition-colors" onClick={() => setMobileMenuOpen(false)}>Catálogo</Link>
+          <Link to="/Empresa" className="text-base font-medium text-gray-900 hover:text-gray-700 transition-colors" onClick={() => setMobileMenuOpen(false)}>Nosotros</Link>
+          <Link to="/Contacto" className="text-base font-medium text-gray-900 hover:text-gray-700 transition-colors" onClick={() => setMobileMenuOpen(false)}>Contacto</Link>
         </div>
       </nav>
       {/* Spacer to offset the fixed navbar with tighter gap */}
       <div className="w-full h-14 md:h-16"></div>
-      
+
       {/* Drawer lateral del carrito - FUERA del nav */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-[9999] transition-transform duration-300 ${
-          cartOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-[9999] transition-transform duration-300 ${cartOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="flex items-center justify-between p-4 border-b bg-gray-50 border-gray-300">
-          <h2 className="text-xl text-gray-900 font-bold ">Shopping Cart</h2>
+          <h2 className="text-xl text-gray-900 font-bold ">Carrito de Compras</h2>
           <button
             className="text-gray-600 hover:text-gray-900 transition-colors"
             onClick={() => setCartOpen(false)}
@@ -220,7 +219,7 @@ export default function Navbar() {
               </div>
               <a
                 className="w-full mt-2 px-4 py-2 h-11 bg-[#25D366] hover:bg-[#1ebe57] text-white font-semibold rounded-lg transition-all text-center flex items-center justify-center hover:shadow-lg hover:shadow-green-500/30 active:scale-95"
-                href={`https://wa.me/YOUR_WHATSAPP_NUMBER?text=${encodeURIComponent(
+                href={`https://wa.me/528119817118?text=${encodeURIComponent(
                   `¡Hola! Quiero comprar:\n\n${cart
                     .map((item, i) => `${i + 1}. ${(item.title || item.nombre)} x${item.quantity} - $${(item.price || item.precio) * item.quantity}`)
                     .join("\n")}\n\nTotal: $${totalPrice}`
@@ -228,7 +227,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Buy via WhatsApp
+                Comprar por WhatsApp
               </a>
             </>
           )}

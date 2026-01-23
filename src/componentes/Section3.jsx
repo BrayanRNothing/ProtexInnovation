@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  TruckIcon, 
-  CreditCardIcon, 
+import {
+  TruckIcon,
+  CreditCardIcon,
   SparklesIcon,
   CheckCircleIcon,
   ClockIcon,
@@ -13,33 +13,33 @@ import {
 const benefits = [
   {
     icon: TruckIcon,
-    title: 'Nationwide Shipping',
-    description: 'Fast and secure delivery. Free shipping on your first purchase.',
+    title: 'Envíos a todo el país',
+    description: 'Entrega rápida y segura. Envío gratis en tu primera compra.',
   },
   {
     icon: CreditCardIcon,
-    title: 'Secure Payment Options',
-    description: 'Multiple payment methods available. 100% safe.',
+    title: 'Opciones de pago seguras',
+    description: 'Múltiples métodos de pago disponibles. 100% seguro.',
   },
   {
     icon: SparklesIcon,
-    title: 'Competitive Prices',
-    description: 'Best prices without compromising quality.',
+    title: 'Precios competitivos',
+    description: 'Los mejores precios sin comprometer la calidad.',
   },
   {
     icon: ClockIcon,
-    title: '24/7 Support',
-    description: 'Available support every day of the week.',
+    title: 'Soporte 24/7',
+    description: 'Soporte disponible todos los días de la semana.',
   },
   {
     icon: ShieldCheckIcon,
-    title: 'Full Warranty',
-    description: 'Manufacturer warranty on all products.',
+    title: 'Garantía total',
+    description: 'Garantía del fabricante en todos los productos.',
   },
   {
     icon: CheckCircleIcon,
-    title: 'Original Products',
-    description: 'Only certified and trusted brands.',
+    title: 'Productos originales',
+    description: 'Solo marcas certificadas y de confianza.',
   }
 ];
 
@@ -57,13 +57,13 @@ export default function Section3() {
         {/* Main heading */}
         <div className="mb-12 md:mb-24 text-center md:text-left">
           <h2 className="text-4xl md:text-7xl font-black tracking-tight mb-4 md:mb-8 leading-tight text-gray-900">
-            The best choice in <br />
+            La mejor opción en <br />
             <span className="text-blue-600">
-              electrical distribution
+              distribución eléctrica
             </span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed mx-auto md:mx-0">
-            With over 20 years of experience, we are your ally in finding the best electrical products with competitive prices and quality service.
+            Con más de 20 años de experiencia, somos su aliado para encontrar los mejores productos eléctricos con precios competitivos y un servicio de calidad.
           </p>
         </div>
 
@@ -98,37 +98,37 @@ export default function Section3() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 py-12 md:py-16 border-y border-gray-100 mb-16 md:mb-24">
           <div className="text-center md:text-left">
             <div className="text-4xl md:text-6xl font-black text-blue-600 mb-2">20+</div>
-            <p className="text-gray-500 font-medium">Years of experience in the market</p>
+            <p className="text-gray-500 font-medium">Años de experiencia en el mercado</p>
           </div>
           <div className="text-center md:text-left">
             <div className="text-4xl md:text-6xl font-black text-cyan-600 mb-2">50K+</div>
-            <p className="text-gray-500 font-medium">Satisfied customers trust us</p>
+            <p className="text-gray-500 font-medium">Clientes satisfechos confían en nosotros</p>
           </div>
           <div className="text-center md:text-left">
             <div className="text-4xl md:text-6xl font-black text-teal-600 mb-2">10K+</div>
-            <p className="text-gray-500 font-medium">Products available in catalog</p>
+            <p className="text-gray-500 font-medium">Productos disponibles en catálogo</p>
           </div>
         </div>
 
         {/* CTA section - minimal and elegant */}
         <div className="flex flex-col md:flex-row gap-8 items-center justify-between text-center md:text-left">
           <div>
-            <h3 className="text-3xl md:text-4xl font-black mb-3 text-gray-900">Ready to get started?</h3>
-            <p className="text-gray-600 text-base md:text-lg">Explore thousands of electrical products at the best prices.</p>
+            <h3 className="text-3xl md:text-4xl font-black mb-3 text-gray-900">¿Listo para empezar?</h3>
+            <p className="text-gray-600 text-base md:text-lg">Explora miles de productos eléctricos a los mejores precios.</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
             <Link
               to="/Catalogo"
               className="group inline-flex items-center justify-center px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
             >
-              <span>Explore Catalog</span>
+              <span>Explorar Catálogo</span>
               <ArrowRightIcon className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               to="/Contacto"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-200 text-gray-900 font-bold rounded-xl hover:border-gray-900 hover:bg-gray-50 transition-all duration-300"
             >
-              Contact Us
+              Contáctanos
             </Link>
           </div>
         </div>

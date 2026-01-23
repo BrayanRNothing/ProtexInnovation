@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  BoltIcon, 
-  WrenchIcon, 
+import {
+  BoltIcon,
+  WrenchIcon,
   LightBulbIcon,
   CubeIcon,
   RectangleStackIcon,
@@ -13,7 +13,7 @@ import {
 const categories = [
   {
     id: 'centro-carga',
-    label: 'Load Centers',
+    label: 'Centros de Carga',
     icon: CubeIcon,
     colorClasses: {
       bg: 'bg-slate-700',
@@ -21,11 +21,11 @@ const categories = [
       groupHoverBg: 'group-hover:bg-slate-700',
       groupHoverText: 'group-hover:text-white'
     },
-    description: 'Electrical distribution centers'
+    description: 'Centros de distribución eléctrica'
   },
   {
     id: 'interruptores-1p',
-    label: 'Circuit Breakers 1P',
+    label: 'Interruptores 1 Polo',
     icon: BoltIcon,
     colorClasses: {
       bg: 'bg-teal-600',
@@ -33,11 +33,11 @@ const categories = [
       groupHoverBg: 'group-hover:bg-teal-600',
       groupHoverText: 'group-hover:text-white'
     },
-    description: 'Single pole thermal magnetic switches'
+    description: 'Interruptores termomagnéticos de un polo'
   },
   {
     id: 'interruptores-2p',
-    label: 'Circuit Breakers 2P',
+    label: 'Interruptores 2 Polos',
     icon: BoltIcon,
     colorClasses: {
       bg: 'bg-slate-600',
@@ -45,11 +45,11 @@ const categories = [
       groupHoverBg: 'group-hover:bg-slate-600',
       groupHoverText: 'group-hover:text-white'
     },
-    description: 'Dual pole control devices'
+    description: 'Dispositivos de control bipolar'
   },
   {
     id: 'interruptores-3p',
-    label: 'Circuit Breakers 3P',
+    label: 'Interruptores 3 Polos',
     icon: BoltIcon,
     colorClasses: {
       bg: 'bg-amber-600',
@@ -57,11 +57,11 @@ const categories = [
       groupHoverBg: 'group-hover:bg-amber-600',
       groupHoverText: 'group-hover:text-white'
     },
-    description: 'Industrial three pole switches'
+    description: 'Interruptores industriales tripolares'
   },
   {
     id: 'conductores',
-    label: 'Electrical Wires',
+    label: 'Conductores Eléctricos',
     icon: RectangleStackIcon,
     colorClasses: {
       bg: 'bg-slate-700',
@@ -69,11 +69,11 @@ const categories = [
       groupHoverBg: 'group-hover:bg-slate-700',
       groupHoverText: 'group-hover:text-white'
     },
-    description: 'Quality cables and conductors'
+    description: 'Cables y conductores de calidad'
   },
   {
     id: 'iluminacion',
-    label: 'Lighting',
+    label: 'Iluminación',
     icon: LightBulbIcon,
     colorClasses: {
       bg: 'bg-teal-600',
@@ -81,11 +81,11 @@ const categories = [
       groupHoverBg: 'group-hover:bg-teal-600',
       groupHoverText: 'group-hover:text-white'
     },
-    description: 'Lamps and lighting systems'
+    description: 'Lámparas y sistemas de iluminación'
   },
   {
     id: 'herramientas',
-    label: 'Tools',
+    label: 'Herramientas',
     icon: WrenchIcon,
     colorClasses: {
       bg: 'bg-slate-600',
@@ -93,11 +93,11 @@ const categories = [
       groupHoverBg: 'group-hover:bg-slate-600',
       groupHoverText: 'group-hover:text-white'
     },
-    description: 'Professional and precision tools'
+    description: 'Herramientas profesionales y de precisión'
   },
   {
     id: 'accesorios',
-    label: 'Accessories',
+    label: 'Accesorios',
     icon: SparklesIcon,
     colorClasses: {
       bg: 'bg-amber-600',
@@ -105,7 +105,7 @@ const categories = [
       groupHoverBg: 'group-hover:bg-amber-600',
       groupHoverText: 'group-hover:text-white'
     },
-    description: 'Electrical accessories and components'
+    description: 'Accesorios y componentes eléctricos'
   }
 ];
 
@@ -122,10 +122,10 @@ export default function Section2() {
         {/* Header */}
         <div className="text-center mb-10 md:mb-16">
           <h2 className="text-4xl md:text-6xl font-black mb-4 md:mb-6 tracking-tight text-gray-900">
-            Our <span className="text-blue-600">Categories</span>
+            Nuestras <span className="text-blue-600">Categorías</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto px-2">
-            Explore our departments and find exactly what you need for your electrical projects
+            Explora nuestros departamentos y encuentra exactamente lo que necesitas para tus proyectos eléctricos
           </p>
         </div>
 
@@ -159,7 +159,7 @@ export default function Section2() {
 
                   {/* CTA */}
                   <div className="flex items-center gap-1 md:gap-2 text-blue-600 font-medium text-xs md:text-sm group-hover:translate-x-1 transition-transform duration-300 mt-auto">
-                    <span>View</span>
+                    <span>Ver</span>
                     <ChevronRightIcon className="w-3 h-3 md:w-4 md:h-4" />
                   </div>
                 </div>
@@ -174,7 +174,7 @@ export default function Section2() {
             to="/Catalogo"
             className="inline-flex items-center gap-3 px-6 py-3 md:px-8 md:py-4 bg-gray-900 hover:bg-gray-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 text-sm md:text-base"
           >
-            <span>View Full Catalog</span>
+            <span>Ver Catálogo Completo</span>
             <ChevronRightIcon className="w-4 h-4 md:w-5 md:h-5" />
           </Link>
         </div>

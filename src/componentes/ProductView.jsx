@@ -68,11 +68,11 @@ export default function ProductView() {
           if (!cancelled) setProduct(foundLocal);
           return;
         }
-        
+
         // Si no está en locales, intenta por API (con timeout de 3 segundos)
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 3000);
-        
+
         try {
           const byId = await fetch(`${API_BASE}/api/products/${id}`, { signal: controller.signal });
           clearTimeout(timeoutId);
@@ -170,12 +170,12 @@ export default function ProductView() {
   const images = Array.from(new Set([primary, ...imagesGathered].filter(Boolean)));
 
   return (
-  <section className="relative flex flex-col items-center min-h-screen md:h-screen px-3 md:px-4 pt-4 md:pt-16 pb-10 md:pb-6 bg-white md:overflow-hidden">
-  {/* Fondo blanco ya forzado en html/body/root desde efecto; sin capa fija para evitar 'algo blanco' tapando */}
-  <div className="w-full max-w-7xl h-full flex flex-col pb-4">
-      
-  {/* Breadcrumbs minimal (ocultos en móvil para dar más aire a la imagen) */}
-  <nav className="hidden md:block mb-2 text-sm text-gray-500" aria-label="Breadcrumb">
+    <section className="relative flex flex-col items-center min-h-screen md:h-screen px-3 md:px-4 pt-4 md:pt-16 pb-10 md:pb-6 bg-white md:overflow-hidden">
+      {/* Fondo blanco ya forzado en html/body/root desde efecto; sin capa fija para evitar 'algo blanco' tapando */}
+      <div className="w-full max-w-7xl h-full flex flex-col pb-4">
+
+        {/* Breadcrumbs minimal (ocultos en móvil para dar más aire a la imagen) */}
+        <nav className="hidden md:block mb-2 text-sm text-gray-500" aria-label="Navegación secundaria">
           <ol className="flex items-center gap-2">
             <li>
               <Link to="/" className="hover:text-blue-600">
@@ -195,8 +195,8 @@ export default function ProductView() {
           </ol>
         </nav>
 
-  <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,0.9fr)] gap-6 flex-1 md:overflow-hidden">
-    {/* Columna izquierda: Galería profesional - miniaturas al lateral izquierdo + imagen principal */}
+        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,0.9fr)] gap-6 flex-1 md:overflow-hidden">
+          {/* Columna izquierda: Galería profesional - miniaturas al lateral izquierdo + imagen principal */}
           <div className="flex flex-col h-auto md:h-full gap-3 order-1 md:pt-1">
             {/* Desktop: imagen grande al lado izquierdo + grid de miniaturas derecho */}
             <div className="hidden md:grid md:grid-cols-[1fr_auto] md:gap-4 md:h-full">
@@ -206,17 +206,16 @@ export default function ProductView() {
                   {images.slice(0, 8).map((src, idx) => (
                     <button
                       key={idx}
-                      className={`w-full aspect-square overflow-hidden rounded-lg transition-transform ${
-                        idx === activeIndex
+                      className={`w-full aspect-square overflow-hidden rounded-lg transition-transform ${idx === activeIndex
                           ? "ring-2 ring-blue-500 scale-105"
                           : "ring-1 ring-gray-200 hover:ring-gray-400 hover:scale-105"
-                      }`}
+                        }`}
                       onClick={() => setActiveIndex(idx)}
                       aria-label={`Imagen ${idx + 1}`}
                     >
-                      <img 
-                        src={src} 
-                        alt={`thumb-${idx + 1}`} 
+                      <img
+                        src={src}
+                        alt={`thumb-${idx + 1}`}
                         className="object-cover w-full h-full"
                         onError={(e) => {
                           e.target.onerror = null;
@@ -305,17 +304,16 @@ export default function ProductView() {
                   {images.slice(0, 6).map((src, idx) => (
                     <button
                       key={idx}
-                      className={`flex-shrink-0 w-16 h-16 overflow-hidden rounded-md transition-all ${
-                        idx === activeIndex
+                      className={`flex-shrink-0 w-16 h-16 overflow-hidden rounded-md transition-all ${idx === activeIndex
                           ? "ring-2 ring-blue-500 scale-105"
                           : "ring-1 ring-gray-200 hover:ring-gray-400"
-                      }`}
+                        }`}
                       onClick={() => setActiveIndex(idx)}
                       aria-label={`Imagen ${idx + 1}`}
                     >
-                      <img 
-                        src={src} 
-                        alt={`thumb-${idx + 1}`} 
+                      <img
+                        src={src}
+                        alt={`thumb-${idx + 1}`}
                         className="object-cover w-full h-full"
                         onError={(e) => {
                           e.target.onerror = null;
@@ -399,7 +397,7 @@ export default function ProductView() {
                   className="w-full h-12 rounded-lg bg-[#25D366] text-white font-semibold hover:bg-[#1ebe57] hover:shadow-lg hover:shadow-green-500/30 active:scale-95 transition-all"
                   onClick={() => {
                     const msg = `¡Hola! Quiero comprar:\n\n${product.title || product.nombre} x${qty}\nPrecio unitario: $${(product.price || product.precio)}\n\n?`;
-                    window.open(`https://wa.me/YOUR_WHATSAPP_NUMBER?text=${encodeURIComponent(msg)}`, "_blank");
+                    window.open(`https://wa.me/528119817118?text=${encodeURIComponent(msg)}`, "_blank");
                   }}
                 >
                   Comprar por WhatsApp

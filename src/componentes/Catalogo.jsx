@@ -5,22 +5,22 @@ import EMPTY_PNG from "../emptyImage";
 import ProductSkeleton from "./ProductSkeleton";
 
 const categories = [
-  { value: "all", label: "All" },
-  { value: "centro-carga", label: "Load Centers" },
-  { value: "interruptores-1p", label: "Circuit Breakers 1 Pole" },
-  { value: "interruptores-2p", label: "Circuit Breakers 2 Poles" },
-  { value: "interruptores-3p", label: "Circuit Breakers 3 Poles" },
-  { value: "conductores", label: "Electrical Wires" },
-  { value: "iluminacion", label: "Lighting" },
-  { value: "herramientas", label: "Tools" },
-  { value: "accesorios", label: "Accessories" },
+  { value: "all", label: "Todos" },
+  { value: "centro-carga", label: "Centros de Carga" },
+  { value: "interruptores-1p", label: "Interruptores 1 Polo" },
+  { value: "interruptores-2p", label: "Interruptores 2 Polos" },
+  { value: "interruptores-3p", label: "Interruptores 3 Polos" },
+  { value: "conductores", label: "Conductores Eléctricos" },
+  { value: "iluminacion", label: "Iluminación" },
+  { value: "herramientas", label: "Herramientas" },
+  { value: "accesorios", label: "Accesorios" },
 ];
 
 export default function Catalogo() {
-    const resolveImageSrc = (imgPath) => {
-      if (!imgPath) return EMPTY_PNG;
-      return imgPath;
-    };
+  const resolveImageSrc = (imgPath) => {
+    if (!imgPath) return EMPTY_PNG;
+    return imgPath;
+  };
   const [searchParams, setSearchParams] = useSearchParams();
   // Template default: render only local sample products to avoid fetching any remote data
   const [products, setProducts] = useState(localProducts);
@@ -60,7 +60,7 @@ export default function Catalogo() {
       <div className="relative z-10 w-full max-w-7xl mb-4 md:mb-6">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 md:gap-4">
           <div>
-            <h1 className="text-2xl md:text-4xl font-black tracking-tight">Product Catalog</h1>
+            <h1 className="text-2xl md:text-4xl font-black tracking-tight">Catálogo de Productos</h1>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
             <div className="relative w-full md:w-auto">
@@ -69,7 +69,7 @@ export default function Catalogo() {
               </svg>
               <input
                 type="text"
-                placeholder="Search products..."
+                placeholder="Buscar productos..."
                 className="w-full pl-10 pr-4 py-2.5 text-gray-900 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-700 focus:border-transparent transition-all placeholder:text-gray-500"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -89,9 +89,9 @@ export default function Catalogo() {
           </div>
         </div>
         <div className="mt-3 text-sm text-gray-600 flex items-center justify-between">
-          <span>{filteredProducts.length} result{filteredProducts.length !== 1 ? 's' : ''}</span>
+          <span>{filteredProducts.length} resultado{filteredProducts.length !== 1 ? 's' : ''}</span>
           {filteredProducts.length > 0 && (
-            <span>Showing <span className="text-gray-900 font-semibold">{filteredProducts.length}</span> of <span className="text-gray-900 font-semibold">{products.length}</span></span>
+            <span>Mostrando <span className="text-gray-900 font-semibold">{filteredProducts.length}</span> de <span className="text-gray-900 font-semibold">{products.length}</span></span>
           )}
         </div>
       </div>
@@ -114,8 +114,8 @@ export default function Catalogo() {
               <svg className="w-24 h-24 mx-auto text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
               </svg>
-              <p className="text-xl text-gray-700">No products found</p>
-              <p className="text-sm text-gray-600 mt-2">Try changing the filters</p>
+              <p className="text-xl text-gray-700">No se encontraron productos</p>
+              <p className="text-sm text-gray-600 mt-2">Intenta cambiar los filtros</p>
             </div>
           )}
           {!loading && filteredProducts.map((product) => (
@@ -151,7 +151,7 @@ export default function Catalogo() {
                 <p className="text-sm text-gray-600 line-clamp-2 flex-1">
                   {product.description || product.descripcion}
                 </p>
-                
+
                 {/* Categoría badge */}
                 {product.category && product.category !== 'all' && (
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-700 w-fit">
@@ -164,7 +164,7 @@ export default function Catalogo() {
                   to={`/producto/${product.id}`}
                   className="mt-auto w-full bg-gray-900 hover:bg-gray-700 text-white font-semibold py-1.5 px-3 text-xs md:text-base md:py-2.5 md:px-4 rounded-lg transition-colors duration-200 text-center"
                 >
-                  View Details
+                  Ver Detalles
                 </Link>
               </div>
             </div>
